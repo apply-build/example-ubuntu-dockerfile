@@ -3,6 +3,7 @@
 FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+RUN printf 'APT::Sandbox::User "root";\n' > /etc/apt/apt.conf.d/99no-sandbox
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates \
