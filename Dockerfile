@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl
 
 RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
 
+RUN apt-get update && apt-get upgrade -y --no-install-recommends
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates \
       curl \
