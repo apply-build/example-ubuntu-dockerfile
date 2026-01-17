@@ -5,6 +5,10 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN printf 'APT::Sandbox::User "root";\n' > /etc/apt/apt.conf.d/99no-sandbox
 
+RUN apt-get update && apt-get install -y --no-install-recommends curl
+
+RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ca-certificates \
       curl \
@@ -16,10 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       traceroute \
       openssl \
       procps \
+      speedtest \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
-RUN apt-get install speedtest -y --no-install-recommends
 # Create a non-root user with a numeric UID/GID (helps with runAsNonRoot enforcement).
 #RUN groupadd -g 65532 app && useradd -m -u 65532 -g 65532 -s /bin/bash app
 #USER 65532:65532
