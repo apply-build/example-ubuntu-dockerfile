@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       tcpdump \
       traceroute \
       openssl \
-      procps
+      procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user with a numeric UID/GID (helps with runAsNonRoot enforcement).
