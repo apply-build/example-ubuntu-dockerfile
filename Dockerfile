@@ -7,8 +7,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl
 
-RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
-
 RUN apt-get update && apt-get upgrade -y --no-install-recommends
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -21,8 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       tcpdump \
       traceroute \
       openssl \
-      procps \
-      speedtest \
+      procps
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user with a numeric UID/GID (helps with runAsNonRoot enforcement).
